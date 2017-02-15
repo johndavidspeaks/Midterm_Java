@@ -10,12 +10,12 @@ class TextFileReader {
     static void writeTextToFile(String fileName, String input) {
         Path filePath = Paths.get(fileName);                        // getting the file path
 
-        File countriesFile = filePath.toFile();                     //opening the file
+        File booksFile = filePath.toFile();                     //opening the file
 
         try {
-            FileReader r = new FileReader(countriesFile);
+            FileReader r = new FileReader(booksFile);
             BufferedReader reader = new BufferedReader(r);
-            PrintWriter out = new PrintWriter(new FileOutputStream(countriesFile, true));
+            PrintWriter out = new PrintWriter(new FileOutputStream(booksFile, true));
             String line = reader.readLine();
             int count = 0;
             while (line != null) {
@@ -47,10 +47,10 @@ class TextFileReader {
     static StringBuilder readTextFile(String fileName) {      // reading the text file and returning the results of that text file
 
         Path filePath = Paths.get(fileName);
-        File countriesFile = filePath.toFile();
+        File booksFile = filePath.toFile();
         StringBuilder result = new StringBuilder();
         try {
-            FileReader r = new FileReader(countriesFile);
+            FileReader r = new FileReader(booksFile);
             BufferedReader reader = new BufferedReader(r);
 
 
@@ -77,12 +77,12 @@ class TextFileReader {
     static void removeLine(String fileName, String lineToRemove) {                   //Removing the country from the list
         //opening old text file
         Path filePath = Paths.get(fileName);
-        File countries = filePath.toFile();
+        File booksFile = filePath.toFile();
         //opening the new temp text file
         Path temp = Paths.get("Temp.txt");
         File tempfile = temp.toFile();
         try {
-            FileReader r = new FileReader(countries);
+            FileReader r = new FileReader(booksFile);
             BufferedReader reader = new BufferedReader(r);
             PrintWriter out = new PrintWriter(new FileOutputStream(tempfile, false));
 
@@ -98,8 +98,8 @@ class TextFileReader {
             out.close();
             reader.close();
             //deleting the old file and renaming the new one
-            countries.delete();
-            tempfile.renameTo(countries);
+            booksFile.delete();
+            tempfile.renameTo(booksFile);
 
 
         } catch (FileNotFoundException ex) {
