@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
-/**
- * Created by adamm on 2/14/2017.
- */
+
 public class Validation {
     private static int getValidInteger() {
         Scanner scan1 = new Scanner(System.in);

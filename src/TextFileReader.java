@@ -2,9 +2,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-/**
- * Created by adamm on 2/13/2017.
- */
+
 class TextFileReader {
 
     static void writeTextToFile(String fileName, String input) {
