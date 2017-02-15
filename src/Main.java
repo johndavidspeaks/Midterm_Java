@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         int loop = 1;
-        System.out.println("Welcome to the Movie List Application");
+        System.out.println("Welcome to the GC Library");
         while (loop == 1) {
 
             instructions();
@@ -24,7 +24,7 @@ public class Main {
     }
 
     private static void instructions() {                                                // instructions for the user to follow
-        System.out.println("What category are you interested in\n1. animated\n2. drama\n3. horror\n4. scifi");
+        System.out.println("What would you like to do?\n1. Print out book list\n2. Checkout Book\n3. Return Book\n4. Search for Book");
         System.out.print("Choice: ");
     }
 
