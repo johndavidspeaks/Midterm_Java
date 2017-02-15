@@ -1,6 +1,7 @@
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 
 class TextFileReader {
@@ -43,32 +44,72 @@ class TextFileReader {
     }
 
     static StringBuilder readTextFile(String fileName) {      // reading the text file and returning the results of that text file
-
-        Path filePath = Paths.get(fileName);
-        File booksFile = filePath.toFile();
-        StringBuilder result = new StringBuilder();
-        try {
-            FileReader r = new FileReader(booksFile);
-            BufferedReader reader = new BufferedReader(r);
+//        Path filePath = Paths.get(fileName);
+//        File booksFile = filePath.toFile();
+//        StringBuilder result = new StringBuilder();
 
 
-            String line = reader.readLine();
+try {
 
-            while (line != null) {
-                result.append(line + "\n");
-                line = reader.readLine();
-            }
 
-            reader.close();
-            return result;
+    ArrayList<String> list = new ArrayList<>();
+    BufferedReader reader = new BufferedReader(new FileReader("list.txt"));
+    String line;
+    while ((line = reader.readLine()) != null) {
+        list.add(line);
+    }
+    reader.close();
+}catch (FileNotFoundException e){
+    System.out.println(e);
+}catch (IOException e){
 
-        } catch (FileNotFoundException ex) {
-            return null;
+    System.out.println(e);
+}
 
-        } catch (IOException ex) {
-            return null;
+return null;
 
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        Path filePath = Paths.get(fileName);
+//        File booksFile = filePath.toFile();
+//        StringBuilder result = new StringBuilder();
+//        try {
+//            FileReader r = new FileReader(booksFile);
+//            BufferedReader reader = new BufferedReader(r);
+//
+//
+//            String line = reader.readLine();
+//
+//            while (line != null) {
+//
+//                ArrayHolder.addBookName(line);
+//                result.append(line + "\n");
+//                line = reader.readLine();
+//            }
+//
+//            reader.close();
+//            return result;
+//
+//        } catch (FileNotFoundException ex) {
+//            return null;
+//
+//        } catch (IOException ex) {
+//            return null;
+//
+//        }
 
     }
 

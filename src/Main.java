@@ -6,8 +6,13 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Welcome to the GC Library");
+        TextFileReader.readTextFile("Books.txt");
+        TextFileReader.readTextFile("Author.txt");
 
         instructions();
+        for (int i = 0; i <12 ; i++) {
+            System.out.println(arrayBook(i)+" "+ arrayAutor(i));
+        }
 
 
 
