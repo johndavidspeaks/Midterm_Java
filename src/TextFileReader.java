@@ -43,22 +43,33 @@ class TextFileReader {
 
     }
 
-    static StringBuilder readTextFile(String fileName) {      // reading the text file and returning the results of that text file
-//        Path filePath = Paths.get(fileName);
-//        File booksFile = filePath.toFile();
-//        StringBuilder result = new StringBuilder();
+    static StringBuilder readTextFile() {      // reading the text file and returning the results of that text file
+        try {
+
+            BufferedReader reader = new BufferedReader(new FileReader("Author.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                ArrayHolder.addAuthor(line);
+            }
+            reader.close();
+
+        }catch (FileNotFoundException e){
+            System.out.println(e);
+        }catch (IOException e){
+
+            System.out.println(e);
+        }
 
 
 try {
 
-
-    ArrayList<String> list = new ArrayList<>();
-    BufferedReader reader = new BufferedReader(new FileReader("list.txt"));
+    BufferedReader reader = new BufferedReader(new FileReader("Books.txt"));
     String line;
     while ((line = reader.readLine()) != null) {
-        list.add(line);
+        ArrayHolder.addBookName(line);
     }
     reader.close();
+
 }catch (FileNotFoundException e){
     System.out.println(e);
 }catch (IOException e){
