@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 /**
  * Created by adamm on 2/13/2017.
  */
-class CountriesTextFile {
+class TextFileReader {
 
     static void writeTextToFile(String fileName, String input) {
         Path filePath = Paths.get(fileName);                        // getting the file path
