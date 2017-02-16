@@ -31,6 +31,8 @@ public class Main {
             }
             case 2: {
 //               search
+                System.out.println("Search for 1. author or 2. title?");
+                search(Validation.getValidInteger(1,2));
                 break;
             }
             case 3: {
@@ -84,6 +86,56 @@ public class Main {
         LocalDate next2Week = today.plus(2, ChronoUnit.WEEKS);
         return next2Week;
 
+    }
+
+    public static void search(int option) {
+
+        Scanner scan1 = new Scanner(System.in);
+        String userInput;
+
+        switch (option) {
+            case 1:
+                System.out.println("What author would you like to search for?");
+
+                searchAuthor(scan1.nextLine());
+                break;
+
+            case 2:
+                System.out.println("What book would you like to search for");
+
+                searchBook(scan1.nextLine());
+                break;
+        }
+    }
+
+
+    public static void searchAuthor(String userInput) {
+        int count = 0;
+        for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
+
+            if (ArrayHolder.bookName.get(i).getAuthor().equalsIgnoreCase(userInput)) {
+                System.out.println(ArrayHolder.bookName.get(i));
+                count++;
+            }
+        }
+        if (count < 1) {
+            System.out.println("Sorry this author not found");
+        }
+    }
+
+    public static void searchBook(String userInput) {
+
+        int count = 0;
+        for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
+
+            if (ArrayHolder.bookName.get(i).getTitle().equalsIgnoreCase(userInput)) {
+                System.out.println(ArrayHolder.bookName.get(i));
+                count++;
+            }
+        }
+        if (count < 1) {
+            System.out.println("Sorry this book not found");
+        }
     }
 
 
