@@ -1,51 +1,45 @@
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 class TextFileReader {
 
-    static void writeTextToFile(String fileName, String input) {
+    static void writeTextToFile(String fileName, CheckedOutBook input) {
         Path filePath = Paths.get(fileName);                        // getting the file path
 
-        File booksFile = filePath.toFile();                     //opening the file
+        File txtFile = filePath.toFile();
 
         try {
-            FileReader r = new FileReader(booksFile);
+            FileReader r = new FileReader(txtFile);
             BufferedReader reader = new BufferedReader(r);
-            PrintWriter out = new PrintWriter(new FileOutputStream(booksFile, true));
-            String line = reader.readLine();
-            int count = 0;
-            while (line != null) {
-                if (line.equalsIgnoreCase(input)) {                         //verifying that the country they entered isn't already on there
-                    System.out.println("That countries is already listed.");
-                    count += 1;
-                }
-
-                line = reader.readLine();
-            }
-            if (count < 1) {
-                out.println(input);                                     // adding the new country to the list
-                System.out.println("This country has been saved!");
-            }
+            PrintWriter out = new PrintWriter(new FileOutputStream(txtFile, true));
 
 
-            reader.close();                                            // closing out the reader and writer
+                out.println(input.getTitle()+"/"+input.getAuthor()+"/"+input.getDueDate());
+
+
+            System.out.println("Your book has been checked out!");
+
+
+            reader.close();
             out.close();
 
         } catch (FileNotFoundException e) {
             System.out.println(e);
         } catch (IOException ex) {
 
-
         }
+
 
     }
 
-    static StringBuilder readTextFile() {      // reading the text file and returning the results of that text file
+    static StringBuilder readTextFile(String fileName) {      // reading the text file and returning the results of that text file
         try {
 
-            BufferedReader reader = new BufferedReader(new FileReader("Books.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line;
             while ((line = reader.readLine()) != null) {
                 String delims = "/";                                    //Braking the sentence into separate words.
@@ -105,5 +99,9 @@ class TextFileReader {
 
         }
 
+    }
+    @Override
+    public String toString(){
+        return String.format("%s/%s/%s");
     }
 }

@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         int input;
         System.out.println("Welcome to the GC Library");
-        TextFileReader.readTextFile();
+        TextFileReader.readTextFile("Books.txt");
         do {
             instructions();
             optionsSwitch(Validation.getValidInteger(1, 4));
@@ -30,9 +30,8 @@ public class Main {
                 break;
             }
             case 2: {
-//               search
                 System.out.println("Search for 1. author or 2. title?");
-                search(Validation.getValidInteger(1,2));
+                search(Validation.getValidInteger(1, 2));
                 break;
             }
             case 3: {
@@ -70,6 +69,7 @@ public class Main {
         if (answer == 1) {
 
             ArrayHolder.bookNameCheckout.add(new CheckedOutBook(ArrayHolder.bookName.get(userInput - 1).title, ArrayHolder.bookName.get(userInput - 1).getAuthor(), dueDate()));
+            TextFileReader.writeTextToFile("CheckedOutBooks.txt",new CheckedOutBook(ArrayHolder.bookName.get(userInput-1).title, ArrayHolder.bookName.get(userInput-1).getAuthor(), dueDate()));
             ArrayHolder.bookName.remove(userInput - 1);
             count++;
         }
@@ -89,54 +89,54 @@ public class Main {
     }
 
     public static void search(int option) {
-
-        Scanner scan1 = new Scanner(System.in);
         String userInput;
+        Scanner scan1 = new Scanner(System.in);
 
         switch (option) {
-            case 1:
+            case 1: {
                 System.out.println("What author would you like to search for?");
-
-                searchAuthor(scan1.nextLine());
+                userInput = scan1.nextLine();
+                for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
+                    if (ArrayHolder.bookName.get(i).getAuthor().equalsIgnoreCase(userInput)) {
+                        searchCheckout(i);
+                    }
+                }
                 break;
+            }
 
-            case 2:
+            case 2: {
                 System.out.println("What book would you like to search for");
+                userInput = scan1.nextLine();
+                for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
 
-                searchBook(scan1.nextLine());
+                    if (ArrayHolder.bookName.get(i).getTitle().equalsIgnoreCase(userInput)) {
+                        searchCheckout(i);
+                    }
+                }
                 break;
+            }
+
         }
+
     }
 
-
-    public static void searchAuthor(String userInput) {
+    private static void searchCheckout(int input) {
         int count = 0;
-        for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
+        System.out.println("Are you sure you want to checkout ");
+        System.out.println(ArrayHolder.bookName.get(input));
+        System.out.println("(1. yes /2. no)");
+        int answer = Validation.getValidInteger(1, 2);
+        if (answer == 1) {
 
-            if (ArrayHolder.bookName.get(i).getAuthor().equalsIgnoreCase(userInput)) {
-                System.out.println(ArrayHolder.bookName.get(i));
-                count++;
-            }
+            ArrayHolder.bookNameCheckout.add(new CheckedOutBook(ArrayHolder.bookName.get(input).title, ArrayHolder.bookName.get(input).getAuthor(), dueDate()));
+            TextFileReader.writeTextToFile("CheckedOutBooks.txt",new CheckedOutBook(ArrayHolder.bookName.get(input).title, ArrayHolder.bookName.get(input).getAuthor(), dueDate()));
+            ArrayHolder.bookName.remove(input);
+            count++;
+
         }
+        count++;
         if (count < 1) {
             System.out.println("Sorry this author not found");
         }
     }
-
-    public static void searchBook(String userInput) {
-
-        int count = 0;
-        for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
-
-            if (ArrayHolder.bookName.get(i).getTitle().equalsIgnoreCase(userInput)) {
-                System.out.println(ArrayHolder.bookName.get(i));
-                count++;
-            }
-        }
-        if (count < 1) {
-            System.out.println("Sorry this book not found");
-        }
-    }
-
-
 }
