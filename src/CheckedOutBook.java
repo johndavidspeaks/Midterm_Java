@@ -1,12 +1,18 @@
 
-public class Book {
+
+/**
+ * Created by adamm on 2/16/2017.
+ */
+public class CheckedOutBook {
     String author;
     String title;
+    String dueDate;
 
 
-    Book(String title, String author) {
+    CheckedOutBook(String title, String author, String dueDate) {
         this. title = title;
         this.author = author;
+        this.dueDate = dueDate;
 
     }
 
@@ -24,6 +30,4 @@ public class Book {
     public String toString() {
         return String.format("%-40s %-30s", title, author);
     }
-
-
 }
