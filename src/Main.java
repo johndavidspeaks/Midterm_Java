@@ -41,7 +41,7 @@ private static Scanner scnr = new Scanner(System.in);
 
     private static void printBookList() {
         for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
-            System.out.println(ArrayHolder.bookName.get(i));
+            System.out.println(ArrayHolder.bookName.get(i).toString());
         }
         System.out.println("Books that are not available -------------------------");
         for (int i = 0; i < ArrayHolder.bookNameCheckout.size() && i < ArrayHolder.authorCheckout.size(); i++) {
