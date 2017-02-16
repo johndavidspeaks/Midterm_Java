@@ -20,5 +20,10 @@ public class Book {
 
     public String getInOut() {return inOut;}
 
+    @Override
+    public String toString() {
+        return String.format("%-40s %-30s %-10s", title, author, inOut);
+    }
+
 
 }
