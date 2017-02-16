@@ -42,11 +42,20 @@ class TextFileReader {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line;
             while ((line = reader.readLine()) != null) {
-                String delims = "/";                                    //Braking the sentence into separate words.
-                String[] tokens = line.split(delims);
-                String token1 = tokens[0];
-                String token2 = tokens[1];
-                ArrayHolder.bookName.add(new Book(token1, token2));
+                if (fileName.equalsIgnoreCase("Books.txt")) {
+                    String delims = "/";                                    //Braking the sentence into separate words.
+                    String[] tokens = line.split(delims);
+                    String token1 = tokens[0];
+                    String token2 = tokens[1];
+                    ArrayHolder.bookName.add(new Book(token1, token2));
+                }else if (fileName.equalsIgnoreCase("CheckedOutBooks.txt")){
+                    String delims = "/";                                    //Braking the sentence into separate words.
+                    String[] tokens = line.split(delims);
+                    String token1 = tokens[0];
+                    String token2 = tokens[1];
+                    String token3 = tokens[3];
+                    ArrayHolder.bookNameCheckout.add(new CheckedOutBook(token1, token2,token3));
+                }
 
             }
             reader.close();
@@ -63,7 +72,7 @@ class TextFileReader {
 
     }
 
-    static void removeLine(String fileName, String lineToRemove) {                   //Removing the country from the list
+    static void removeLine(String fileName, CheckedOutBook book) {                   //Removing the country from the list
         //opening old text file
         Path filePath = Paths.get(fileName);
         File booksFile = filePath.toFile();
@@ -100,8 +109,5 @@ class TextFileReader {
         }
 
     }
-    @Override
-    public String toString(){
-        return String.format("%s/%s/%s");
-    }
+
 }

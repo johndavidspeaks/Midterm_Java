@@ -6,10 +6,10 @@ import java.time.LocalDate;
 public class CheckedOutBook {
     String author;
     String title;
-    LocalDate dueDate;
+    String dueDate;
 
 
-    CheckedOutBook(String title, String author, LocalDate dueDate) {
+    CheckedOutBook(String title, String author, String dueDate) {
         this.title = title;
         this.author = author;
         this.dueDate = dueDate;
@@ -24,7 +24,7 @@ public class CheckedOutBook {
         return author;
     }
 
-    public LocalDate getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
