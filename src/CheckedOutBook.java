@@ -1,4 +1,4 @@
-
+import java.time.LocalDate;
 
 /**
  * Created by adamm on 2/16/2017.
@@ -6,11 +6,11 @@
 public class CheckedOutBook {
     String author;
     String title;
-    String dueDate;
+    LocalDate dueDate;
 
 
-    CheckedOutBook(String title, String author, String dueDate) {
-        this. title = title;
+    CheckedOutBook(String title, String author, LocalDate dueDate) {
+        this.title = title;
         this.author = author;
         this.dueDate = dueDate;
 
@@ -24,10 +24,12 @@ public class CheckedOutBook {
         return author;
     }
 
-
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
 
     @Override
     public String toString() {
-        return String.format("%-40s %-30s", title, author);
+        return String.format("%-40s %-30s %-30s", title, author, dueDate);
     }
 }

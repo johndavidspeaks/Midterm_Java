@@ -5,14 +5,8 @@ import java.util.ArrayList;
  */
 public class ArrayHolder {
 
-   public static ArrayList<Book> bookName = new ArrayList<>();
-   public static ArrayList<CheckedOutBook> bookNameCheckout = new ArrayList<>();
-
-
-
-
-
-
+    public static ArrayList<Book> bookName = new ArrayList<>();
+    public static ArrayList<CheckedOutBook> bookNameCheckout = new ArrayList<>();
 
 
 }

@@ -5,7 +5,7 @@ public class Book {
 
 
     Book(String title, String author) {
-        this. title = title;
+        this.title = title;
         this.author = author;
 
     }
@@ -17,7 +17,6 @@ public class Book {
     public String getAuthor() {
         return author;
     }
-
 
 
     @Override

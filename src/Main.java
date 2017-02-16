@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 public class Main {
@@ -11,8 +13,8 @@ public class Main {
             instructions();
             optionsSwitch(Validation.getValidInteger(1, 4));
             System.out.println("Would you like to continue? (1. yes/2. no)");
-            input = Validation.getValidInteger(1,2);
-        }while (input == 1);
+            input = Validation.getValidInteger(1, 2);
+        } while (input == 1);
 
     }
 
@@ -58,23 +60,29 @@ public class Main {
     private static void checkoutBook(int userInput) {
         int count = 0;
 
-        ArrayHolder.bookName.get(userInput-1);
+        ArrayHolder.bookName.get(userInput - 1);
         System.out.println("Are you sure you want to checkout ");
-        System.out.println(ArrayHolder.bookName.get(userInput-1).toString());
+        System.out.println(ArrayHolder.bookName.get(userInput - 1).toString());
         System.out.println("(1. yes /2. no)");
         int answer = Validation.getValidInteger(1, 2);
         if (answer == 1) {
 
-            ArrayHolder.bookNameCheckout.add(new CheckedOutBook(ArrayHolder.bookName.get(userInput-1).title,ArrayHolder.bookName.get(userInput-1).getAuthor(),"date"));
-            ArrayHolder.bookName.remove(userInput-1);
+            ArrayHolder.bookNameCheckout.add(new CheckedOutBook(ArrayHolder.bookName.get(userInput - 1).title, ArrayHolder.bookName.get(userInput - 1).getAuthor(), dueDate()));
+            ArrayHolder.bookName.remove(userInput - 1);
             count++;
         }
-
-
 
         if (count < 1) {
             System.out.println("Book not found!!!!!!!");
         }
+
+    }
+
+    private static LocalDate dueDate() {
+        LocalDate today = LocalDate.now();
+        //add 2 week to the current date
+        LocalDate next2Week = today.plus(2, ChronoUnit.WEEKS);
+        return next2Week;
 
     }
 
