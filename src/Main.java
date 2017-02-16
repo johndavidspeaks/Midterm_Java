@@ -1,3 +1,5 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
@@ -41,6 +43,8 @@ public class Main {
             }
             case 4: {
 //                return
+                System.out.println("Enter the number you want to remove");
+                returnBook(Validation.getValidInteger(1,12));
                 break;
             }
 
@@ -80,11 +84,14 @@ public class Main {
 
     }
 
-    private static LocalDate dueDate() {
+    private static String dueDate() {
         LocalDate today = LocalDate.now();
         //add 2 week to the current date
         LocalDate next2Week = today.plus(2, ChronoUnit.WEEKS);
-        return next2Week;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        String date = dateFormat.format(next2Week);
+
+        return date;
 
     }
 
@@ -139,4 +146,28 @@ public class Main {
             System.out.println("Sorry this author not found");
         }
     }
+
+    private static void returnBook(int userInput) {
+        int count = 0;
+
+        ArrayHolder.bookNameCheckout.get(userInput - 1);
+        System.out.println("Are you sure you want to checkout ");
+        System.out.println(ArrayHolder.bookNameCheckout.get(userInput - 1).toString());
+        System.out.println("(1. yes /2. no)");
+        int answer = Validation.getValidInteger(1, 2);
+        if (answer == 1) {
+
+            ArrayHolder.bookName.add(new Book(ArrayHolder.bookNameCheckout.get(userInput - 1).getTitle(), ArrayHolder.bookNameCheckout.get(userInput - 1).getAuthor()));
+            TextFileReader.writeTextToFile("CheckedOutBooks.txt",new CheckedOutBook(ArrayHolder.bookName.get(userInput-1).title, ArrayHolder.bookName.get(userInput-1).getAuthor(), dueDate()));
+            ArrayHolder.bookNameCheckout.remove(userInput - 1);
+            count++;
+        }
+
+        if (count < 1) {
+            System.out.println("Book not found!!!!!!!");
+        }
+
+    }
 }
+
+
