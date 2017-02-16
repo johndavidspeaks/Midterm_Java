@@ -46,10 +46,12 @@ class TextFileReader {
     static StringBuilder readTextFile() {      // reading the text file and returning the results of that text file
         try {
 
-            BufferedReader reader = new BufferedReader(new FileReader("Author.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("Books.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
-                ArrayHolder.addAuthor(line);
+                String delims = "/";                                    //Braking the sentence into separate words.
+                String[] tokens = line.split(delims);
+                new Book(tokens[1],tokens[2],"in");
             }
             reader.close();
 
@@ -61,21 +63,21 @@ class TextFileReader {
         }
 
 
-try {
-
-    BufferedReader reader = new BufferedReader(new FileReader("Books.txt"));
-    String line;
-    while ((line = reader.readLine()) != null) {
-        ArrayHolder.addBookName(line);
-    }
-    reader.close();
-
-}catch (FileNotFoundException e){
-    System.out.println(e);
-}catch (IOException e){
-
-    System.out.println(e);
-}
+//try {
+//
+//    BufferedReader reader = new BufferedReader(new FileReader("Books.txt"));
+//    String line;
+//    while ((line = reader.readLine()) != null) {
+//        ArrayHolder.addBookName(line);
+//    }
+//    reader.close();
+//
+//}catch (FileNotFoundException e){
+//    System.out.println(e);
+//}catch (IOException e){
+//
+//    System.out.println(e);
+//}
 
 return null;
 

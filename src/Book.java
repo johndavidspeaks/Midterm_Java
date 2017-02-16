@@ -3,7 +3,7 @@ public class Book {
     String autor;
     String title;
 
-    Book(String name, String catagory) {
+    Book(String name, String catagory, String inOut) {
         this.autor = name;
         this. title = catagory;
     }
