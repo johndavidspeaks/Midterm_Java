@@ -40,8 +40,8 @@ private static Scanner scnr = new Scanner(System.in);
     }
 
     private static void printBookList() {
-        for (int i = 0; i < ArrayHolder.bookName.size() && i < ArrayHolder.author.size(); i++) {
-            System.out.println(ArrayHolder.bookName.get(i) + " " + ArrayHolder.author.get(i));
+        for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
+            System.out.println(ArrayHolder.bookName.get(i));
         }
         System.out.println("Books that are not available -------------------------");
         for (int i = 0; i < ArrayHolder.bookNameCheckout.size() && i < ArrayHolder.authorCheckout.size(); i++) {
@@ -50,20 +50,20 @@ private static Scanner scnr = new Scanner(System.in);
     }
 
     private static void checkoutBook(String userInput) {
-        int count = 0;
-        for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
-            if (ArrayHolder.bookName.get(i).equalsIgnoreCase(userInput)) {
-                ArrayHolder.bookNameCheckout.add(ArrayHolder.bookName.get(i));
-                ArrayHolder.bookName.remove(i);
-                ArrayHolder.authorCheckout.add(ArrayHolder.author.get(i));
-                ArrayHolder.author.remove(i);
-                count++;
-            }
-        }
-        if (count<1){
-            System.out.println("Book not found!!!!!!!!!");
-        }
-        printBookList();
+//        int count = 0;
+//        for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
+//            if (ArrayHolder.bookName.get(i).equalsIgnoreCase(userInput)) {
+//                ArrayHolder.bookNameCheckout.add(ArrayHolder.bookName.get(i));
+//                ArrayHolder.bookName.remove(i);
+//                ArrayHolder.authorCheckout.add(ArrayHolder.author.get(i));
+//                ArrayHolder.author.remove(i);
+//                count++;
+//            }
+//        }
+//        if (count<1){
+//            System.out.println("Book not found!!!!!!!!!");
+//        }
+//        printBookList();
 
     }
 

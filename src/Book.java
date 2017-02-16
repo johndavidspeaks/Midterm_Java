@@ -1,20 +1,24 @@
 
 public class Book {
-    String autor;
+    String author;
     String title;
+    String inOut;
 
-    Book(String name, String catagory, String inOut) {
-        this.autor = name;
-        this. title = catagory;
+    Book(String name, String author, String inOut) {
+        this.author = name;
+        this. title = author;
+        this.inOut = inOut;
     }
 
     public String getName() {
-        return autor;
+        return author;
     }
 
-    public String getCatagory() {
+    public String getAuthor() {
         return title;
     }
+
+    public String getInOut() {return inOut;}
 
 
 }

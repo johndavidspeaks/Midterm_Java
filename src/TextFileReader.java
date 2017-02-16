@@ -1,7 +1,6 @@
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 
 class TextFileReader {
@@ -51,7 +50,10 @@ class TextFileReader {
             while ((line = reader.readLine()) != null) {
                 String delims = "/";                                    //Braking the sentence into separate words.
                 String[] tokens = line.split(delims);
-                new Book(tokens[1],tokens[2],"in");
+                String token1 = tokens[0];
+                String token2 = tokens[1];
+                ArrayHolder.bookName.add(new Book(token1,token2,"in"));
+
             }
             reader.close();
 
