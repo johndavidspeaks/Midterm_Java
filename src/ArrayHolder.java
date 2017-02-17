@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 //class to hold our arrays
-public class ArrayHolder {
+class ArrayHolder {
 
-    public static ArrayList<Book> bookName = new ArrayList<>();
-    public static ArrayList<CheckedOutBook> bookNameCheckout = new ArrayList<>();
+    static ArrayList<Book> bookName = new ArrayList<>();
+    static ArrayList<CheckedOutBook> bookNameCheckout = new ArrayList<>();
 
 
 

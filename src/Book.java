@@ -12,11 +12,11 @@ public class Book {
     }
 
     //getters
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public String getAuthor() {
+    String getAuthor() {
         return author;
     }
 

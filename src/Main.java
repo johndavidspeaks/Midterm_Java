@@ -12,7 +12,7 @@ public class Main {
         do {    //a loop to let the user choose there options until they want to exit the program
             instructions();
             optionsSwitch(Validation.getValidInteger(1, 4));
-            System.out.println("Would you like to continue? (1. yes/2. no)");
+            System.out.println("Would you like to continue? (1. yes / 2. no)");
             input = Validation.getValidInteger(1, 2);
         } while (input == 1);
 
@@ -51,24 +51,28 @@ public class Main {
 
     private static void printBookList() {
         //this prints out the books that are available
-        System.out.println("Books that are available -------------------------");
+        System.out.println(" ");
+        System.out.println("------------Books that are available------------");
+        System.out.println(" ");
         for (int i = 0; i < ArrayHolder.bookName.size(); i++) {
             System.out.println((i + 1) + ". " + ArrayHolder.bookName.get(i).toString());
         }
         //this prints out the books that are checked out
-        System.out.println("Books that are not available -------------------------");
+        System.out.println(" ");
+        System.out.println("------------Books that are not available------------");
+        System.out.println(" ");
         for (int i = 0; i < ArrayHolder.bookNameCheckout.size(); i++) {
             System.out.println((i + 1) + ". " + ArrayHolder.bookNameCheckout.get(i).toString());
         }
     }
 
     private static void checkoutBook(int userInput) {
-        int count = 0;
 
         ArrayHolder.bookName.get(userInput - 1);     // gets the peculiar book the from the available list
-        System.out.println("Are you sure you want to checkout ");
+        System.out.println(" ");
+        System.out.println("Are you sure you want to checkout: ");
         System.out.println(ArrayHolder.bookName.get(userInput - 1).toString());
-        System.out.println("(1. yes /2. no)");      //this allows the user to say no if they actually want a different book
+        System.out.println("(1.yes / 2.no)");      //this allows the user to say no if they actually want a different book
         int answer = Validation.getValidInteger(1, 2);  //validates the input
         if (answer == 1) {
 
@@ -79,12 +83,9 @@ public class Main {
             TextFileReader.writeTextToCheckedOutBooksFile("CheckedOutBooks.txt", book);
             TextFileReader.removeLineFromBookFile("Books.txt", removeBook);
             ArrayHolder.bookName.remove(userInput - 1);
-            count++;
+
         }
 
-        if (count < 1) {
-            System.out.println("Book not found!!!!!!!");    //catches if the book they wanted is not in there
-        }
 
     }
 
@@ -115,7 +116,7 @@ public class Main {
                     }
                 }
                 if (count < 1) {
-                    System.out.println("Sorry Author not found");   //if that author is not found
+                    System.out.println("Sorry Author not found!!!");   //if that author is not found
                 }
                 break;
             }
@@ -132,7 +133,7 @@ public class Main {
                     }
                 }
                 if (count < 1) {
-                    System.out.println("Sorry book not found"); //if that book is not found
+                    System.out.println("Sorry book not found!!!"); //if that book is not found
                 }
                 break;
             }
@@ -142,7 +143,6 @@ public class Main {
     }
 
     private static void searchCheckout(int input) {     //if they search and find they book they want they can check it out right then
-        int count = 0;
         System.out.println("Would you like to check this book out? ");
         System.out.println(ArrayHolder.bookName.get(input));
         System.out.println("(1. yes /2. no)");
@@ -156,17 +156,13 @@ public class Main {
             TextFileReader.writeTextToCheckedOutBooksFile("CheckedOutBooks.txt", book);
             TextFileReader.removeLineFromBookFile("Books.txt", removeBook);
             ArrayHolder.bookName.remove(input);
-            count++;
+
 
         }
 
-        if (count < 1) {
-            System.out.println("Sorry book not found"); //if the book is not found
-        }
     }
 
     private static void returnBook(int userInput) {
-        int count = 0;
 
         // allows the user to return the book
         ArrayHolder.bookNameCheckout.get(userInput - 1);
@@ -182,11 +178,7 @@ public class Main {
             TextFileReader.writeTextToBooksFile("Books.txt", book);
             TextFileReader.removeLineFromCheckedOutFile("CheckedOutBooks.txt", removeBook);
             ArrayHolder.bookNameCheckout.remove(userInput - 1);
-            count++;
-        }
 
-        if (count < 1) {
-            System.out.println("Book not found!!!!!!!");    //if the book is not found
         }
 
     }

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class Validation {
+class Validation {
 
     //this class allows the program to check the users input
 

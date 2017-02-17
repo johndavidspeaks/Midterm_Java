@@ -14,15 +14,15 @@ public class CheckedOutBook {
     }
 
     //getters
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public String getAuthor() {
+    String getAuthor() {
         return author;
     }
 
-    public String getDueDate() {
+    String getDueDate() {
         return dueDate;
     }
 
