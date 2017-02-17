@@ -93,8 +93,6 @@ class TextFileReader {
             }
             reader.close();     //makes sure we close the file when done
 
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
         } catch (IOException e) {
 
             System.out.println(e);
@@ -136,9 +134,10 @@ class TextFileReader {
 
 
         } catch (FileNotFoundException ex) {
-
+            System.out.println(ex);
 
         } catch (IOException ex) {
+            System.out.println(ex);
 
 
         }

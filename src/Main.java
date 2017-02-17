@@ -98,7 +98,7 @@ public class Main {
 
     }
 
-    public static void search(int option) {
+    private static void search(int option) {
         String userInput;
         Scanner scan1 = new Scanner(System.in);
         int count = 0;
