@@ -41,7 +41,8 @@ public class Main {
                 break;
             }
             case 4: {   //Returns a books
-                System.out.print("Enter the number you want to return: ");
+                returnbooklistprint();
+                System.out.print("Enter the number of the book you want to return: ");
                 returnBook(Validation.getValidInteger(1, ArrayHolder.bookNameCheckout.size() + 1));
                 break;
             }
@@ -181,6 +182,16 @@ public class Main {
 
         }
 
+    }
+
+    private static void returnbooklistprint() {
+        //this prints out the books that are checked out
+        System.out.println(" ");
+        System.out.println("------------What book would you like to return------------");
+        System.out.println(" ");
+        for (int i = 0; i < ArrayHolder.bookNameCheckout.size(); i++) {
+            System.out.println((i + 1) + ". " + ArrayHolder.bookNameCheckout.get(i).toString());
+        }
     }
 }
 

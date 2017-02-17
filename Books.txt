@@ -1,7 +1,5 @@
 Harry Potter and the Deathly Hallows/J. K. Rowling
 The Hitchhiker's Guide to the Galaxy/Douglas Adams
-Great Expectations/Charles Dickens
-The Grapes of Wrath/John Steinbeck
 Green Eggs and Ham/Dr. Seuss
 Little House on the Prairie/Laura Ingalls Wilder
 A Wrinkle in Time/Madeleine L'Engle
@@ -10,3 +8,5 @@ The Lion, the Witch, and the Wardrobe/C. S. Lewis
 The Great Gatsby/F. Scott Fitzgerald
 The Lord of the Rings/J.R.R. Tolkien
 Where the Red Fern Grows/Wilson Rawls
+Great Expectations/Charles Dickens
+The Grapes of Wrath/John Steinbeck
