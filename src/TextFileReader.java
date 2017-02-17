@@ -5,7 +5,8 @@ import java.nio.file.Paths;
 
 class TextFileReader {
 
-    static void writeTextToFile(String fileName, Book input) {
+    //this writes the arrays to the text files for available books
+    static void writeTextToBooksFile(String fileName, Book input) {
         Path filePath = Paths.get(fileName);                        // getting the file path
 
         File txtFile = filePath.toFile();
@@ -22,7 +23,7 @@ class TextFileReader {
             System.out.println("Success!");
 
 
-            reader.close();
+            reader.close();     //makes sure we close the file when done
             out.close();
 
         } catch (FileNotFoundException e) {
@@ -34,7 +35,8 @@ class TextFileReader {
 
     }
 
-    static void writeTextToFile2(String fileName, CheckedOutBook input) {
+    ////this writes the arrays to the text files for checked out books
+    static void writeTextToCheckedOutBooksFile(String fileName, CheckedOutBook input) {
         Path filePath = Paths.get(fileName);                        // getting the file path
 
         File txtFile = filePath.toFile();
@@ -51,7 +53,7 @@ class TextFileReader {
             System.out.println("Success!");
 
 
-            reader.close();
+            reader.close();     //makes sure we close the file when done
             out.close();
 
         } catch (FileNotFoundException e) {
@@ -69,13 +71,17 @@ class TextFileReader {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line;
             while ((line = reader.readLine()) != null) {
+                //these put in their respective arrays
+                //Available books
                 if (fileName.equalsIgnoreCase("Books.txt")) {
                     String delims = "/";                                    //Braking the sentence into separate words.
                     String[] tokens = line.split(delims);
                     String token1 = tokens[0];
                     String token2 = tokens[1];
                     ArrayHolder.bookName.add(new Book(token1, token2));
-                } else if (fileName.equalsIgnoreCase("CheckedOutBooks.txt")) {
+                }
+                //checked out books
+                else if (fileName.equalsIgnoreCase("CheckedOutBooks.txt")) {
                     String delims = "/";                                    //Braking the sentence into separate words.
                     String[] tokens = line.split(delims);
                     String token1 = tokens[0];
@@ -85,7 +91,7 @@ class TextFileReader {
                 }
 
             }
-            reader.close();
+            reader.close();     //makes sure we close the file when done
 
         } catch (FileNotFoundException e) {
             System.out.println(e);
@@ -99,7 +105,8 @@ class TextFileReader {
 
     }
 
-    static void removeLine(String fileName, Book book) {                   //Removing the country from the list
+    //this removes the appropriate book from the correct file and puts it in the other book
+    static void removeLineFromBookFile(String fileName, Book book) {
         //opening old text file
         Path filePath = Paths.get(fileName);
         File booksFile = filePath.toFile();
@@ -113,7 +120,7 @@ class TextFileReader {
 
 
             String line = reader.readLine();
-            //finding the name of the country to skip over
+            //finding the name of the book to skip over
             while (line != null) {
                 if (!line.equalsIgnoreCase(book.getTitle() + "/" + book.getAuthor())) {
                     out.println(line);
@@ -138,7 +145,8 @@ class TextFileReader {
 
     }
 
-    static void removeLine2(String fileName, CheckedOutBook book) {
+    //this removes the appropriate book from the correct file and puts it in the other book
+    static void removeLineFromCheckedOutFile(String fileName, CheckedOutBook book) {
         //opening old text file
         Path filePath = Paths.get(fileName);
         File booksFile = filePath.toFile();
@@ -152,7 +160,7 @@ class TextFileReader {
 
 
             String line = reader.readLine();
-            //finding the name of the country to skip over
+            //finding the name of the book to skip over
             while (line != null) {
                 if (!line.equalsIgnoreCase(book.getTitle() + "/" + book.getAuthor() + "/" + book.getDueDate())) {
                     out.println(line);

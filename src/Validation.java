@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 
 public class Validation {
+
+    //this class allows the program to check the users input
+
     private static int getValidInteger() {
         Scanner scan1 = new Scanner(System.in);
         //validation for numbers

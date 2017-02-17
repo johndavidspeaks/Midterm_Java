@@ -1,9 +1,5 @@
 import java.util.ArrayList;
-
-
-/**
- * Created by adamm on 2/15/2017.
- */
+//class to hold our arrays
 public class ArrayHolder {
 
     public static ArrayList<Book> bookName = new ArrayList<>();
